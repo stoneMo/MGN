@@ -1,7 +1,12 @@
 # Multi-modal Grouping Network for Weakly-Supervised Audio-Visual Video Parsing
 
 Official implementation for MGN. 
+
 MGN is a novel and lightweight baseline with explicitly semantic-aware grouping for weakly-supervised audio-visual video parsing.
+
+[**Multi-modal Grouping Network for Weakly-Supervised Audio-Visual Video Parsing**](https://openreview.net/pdf?id=zfo2LqFEVY)
+<br>Shentong Mo, Yapeng Tian<br>
+NeurIPS 2022.
 
 <div align="center">
   <img width="100%" alt="MGN Illustration" src="images/framework.png">
@@ -49,4 +54,16 @@ python main.py --mode test \
     --st_dir path/to/r2plus1d_18/feats/ \
     --model_save_dir models/ \
     --unimodal_assign soft --crossmodal_assign soft
+```
+
+## Citation
+
+If you find this repository useful, please cite our paper:
+```
+@inproceedings{mo2022multimodal,
+  title={Multi-modal Grouping Network for Weakly-Supervised Audio-Visual Video Parsing},
+  author={Mo, Shentong and Tian, Yapeng},
+  booktitle={Advances in Neural Information Processing Systems},
+  year={2022}
+}
 ```
