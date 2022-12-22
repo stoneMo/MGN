@@ -116,13 +116,13 @@ class MGN_Net(nn.Module):
         x2_0 = self.fc_fusion(x2_0)
 
         # visual uni-modal grouping
-        x2, attn_visual_dict, x2_attn = self.visual_cug(x2_0, self.visual_token, return_attn=True)
+        x2, attn_visual_dict, _ = self.visual_cug(x2_0, self.visual_token, return_attn=True)
 
         # audio uni-modal grouping
-        x1, attn_audio_dict, x1_attn = self.audio_cug(x1_0, self.audio_token, x2_0, return_attn=True)
+        x1, attn_audio_dict, _ = self.audio_cug(x1_0, self.audio_token, x2_0, return_attn=True)
 
         # modality-aware cross-modal grouping
-        x, attn_av_dict, _ = self.av_mcg(x1, x2, return_attn=True)
+        x, _, _ = self.av_mcg(x1, x2, return_attn=True)
 
         # prediction
         av_prob = torch.sigmoid(self.fc_prob(x))                                # [B, 25, 1]
