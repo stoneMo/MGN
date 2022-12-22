@@ -114,7 +114,6 @@ class AssignAttention(nn.Module):
                 attn = hard_softmax(attn, dim=attn_dim)
             else:
                 attn = F.softmax(attn, dim=attn_dim)
-                attn = 1. + F.softmax(attn, dim=-1)
 
         return attn
 
@@ -139,6 +138,7 @@ class AssignAttention(nn.Module):
         if return_attn:
             hard_attn = attn.clone()
             soft_attn = self.get_attn(raw_attn, gumbel=False, hard=False)
+            soft_attn = 1. + F.softmax(soft_attn, dim=-1)
             attn_dict = {'hard': hard_attn, 'soft': soft_attn}
         else:
             attn_dict = None
