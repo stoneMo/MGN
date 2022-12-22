@@ -136,10 +136,6 @@ class MGN_Net(nn.Module):
         attn_audio = attn_audio_dict[self.unimodal_assgin].squeeze(1)                    # [25, 10]
         attn_visual = attn_visual_dict[self.unimodal_assgin].squeeze(1)                  # [25, 10]
 
-        # softmax
-        attn_audio = torch.softmax(attn_audio, dim=0)
-        attn_visual = torch.softmax(attn_visual, dim=0)
-
         # audio prediction
         a_prob = torch.sigmoid(self.fc_prob_a(x1))                                # [B, 25, 1]
         a_frame_prob = (a_prob * attn_audio).permute(0, 2, 1)                     # [B, 10, 25]
